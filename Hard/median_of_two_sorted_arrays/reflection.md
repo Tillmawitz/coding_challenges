@@ -1,0 +1,11 @@
+# Performance
+
+Ultimately did not come to an optimal solution due to misunderstanding the prompt. Need to remember to reread the prompt multiple times and internalize the constraints. At some point I forgot that the arrays were already sorted and assumed we needed to merge the arrays. In terms of optimizing the merge sort, I used constant memory and stopped when the median was found instead of fully merging the arrays then finding the median which is good optimization. I failed to recognize this is a binary search problem and need to review recognizing problem classes.
+
+# Optimal Solution
+
+There is a solution that achieves $O(\log(m+n))$ time and a solution that achieves $O(\log(\min(m, n)))$ time. Both rely on recognizing the problem is binary search, with the slower solution comparing medians of the lists and discarding either the smaller half of the list with the lower median or the larger half of the list with the larger median. This solution is pretty convoluted with a large potential for small errors in the implementation. The optimal solution relies on the understanding that we need to partition the two arrays such that the sum of the length of their left components is equal to the index of the median. By focusing on partitioning the smaller array, we minimize the time needed and start by finding the middle of the smaller array and setting our partition of the larger array such that the left component size sums to the median. Then it is a simple matter of determining if the split is valid, meaning the maximum value of the left component of the smaller array is lte the minimum of the right of the larger array and the max of the left component of the larger array is lte the min of the right component of the smaller array. If this is the case, the median is the max of the left components if odd or the sum of the max of the left and min of the right divided by 2.
+
+The optimal solution is much more in line with how I would prefer to determine the median, relying on the knowledge that the median is a known index in an array. Recognizing the class of problem is something I am rusty on and need to review more.
+
+Originally solve 1/29/26.
